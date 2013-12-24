@@ -3,8 +3,12 @@ var crypto = require('crypto'),
     Post = require('../models/post.js'),
     Comment = require('../models/comment.js');
 
+var logger = require('../app').logger('index');
+
 module.exports = function(app){
     app.get('/',function(req,res){
+
+        logger.info("This is an index page! -- log4js");
 
         //判断是否是第一页，并把请求的页数转换成 number 类型
         var page = req.query.p?parseInt(req.query.p):1;
